@@ -280,6 +280,15 @@ const ListIcon = () => {
     );
 }
 
+const MerchantArrowRight = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="49" viewBox="0 0 26 49" fill="none">
+            <line x1="1.35355" y1="0.646447" x2="25.3536" y2="24.6464" stroke="#E6ECEE"/>
+            <line x1="0.646447" y1="48.6464" x2="24.6464" y2="24.6464" stroke="#E6ECEE"/>
+        </svg>
+    );
+}
+
 
 export { 
     Circle,
@@ -312,4 +321,5 @@ export {
     FilterIcon,
     ListIcon,
     GridIcon,
+    MerchantArrowRight,
 };

@@ -12,4 +12,12 @@ class MerchantController extends Controller
 
         return Inertia::render('Merchant/Merchant');
     }
+
+    public function addMerchant()
+    {
+
+        
+
+        return Inertia::render('Merchant/AddMerchant');
+    }
 }

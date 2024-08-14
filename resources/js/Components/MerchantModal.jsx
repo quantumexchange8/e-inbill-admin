@@ -2,19 +2,19 @@ import { Button, CloseButton, Dialog, DialogPanel, DialogTitle } from '@headless
 import { useCallback, useState } from 'react';
 import { XIcon } from './Icon/outline';
 
-export default function Modal({ children, show = false, maxWidth = 'md', maxHeight = 'md', isOpen, close, title, footer, closeIcon, preventCloseOnClickOutside = true }) {
+export default function MerchantModal({ children, show = false, maxWidth = 'md', maxHeight = 'md', isOpen, close, title, footer, closeIcon, preventCloseOnClickOutside = true }) {
 
     const maxWidthClass = {
         sm: 'sm:w-[300px] ',
         md: 'max-w-[500px]',
         lg: 'sm:max-w-lg',
-        xl: 'sm:w-full md:min-w-full lg:min-w-[1024px] xl:min-w-[1140px]',
+        xl: 'sm:w-full md:min-w-full lg:min-w-[1024px] xl:min-w-[1280px]',
     }[maxWidth] ;
 
     const maxHeightClass = {
         sm: 'sm:h-[500px] xl:h-[700px]',
         md: 'h-full',
-        xl: 'sm:h-full max-h-screen md:h-full lg:min-h-auto xl:min-h-[700px]',
+        xl: 'sm:h-full max-h-screen md:h-full lg:min-h-auto xl:min-h-full',
     }[maxHeight];
 
     const handleOverlayClick = useCallback((e) => {
@@ -40,15 +40,11 @@ export default function Modal({ children, show = false, maxWidth = 'md', maxHeig
                             <div className='w-full'>
                                 {title}
                             </div>
-                            <CloseButton onClick={close}>
+                            <div >
                                 {closeIcon}
-                                {/* <XIcon /> */}
-                            </CloseButton>
+                            </div>
                         </DialogTitle>
                         {children}
-                        <div className="w-full p-5 bg-white rounded-b-lg">
-                            {footer}
-                        </div>
                     </DialogPanel>
                 </div>
                 </div>

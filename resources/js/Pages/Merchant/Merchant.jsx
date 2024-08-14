@@ -3,9 +3,9 @@ import { DashboardIcon, FilterIcon, ListIcon, NoOfMerchantIcon, PlusIcon, Search
 import InputIconWrapper from "@/Components/InputIconWrapper";
 import SearchInput from "@/Components/SearchInput";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
-import { Head, useForm } from "@inertiajs/react";
+import { Head, Link, useForm } from "@inertiajs/react";
 import React from "react";
-import AddMerchant from "@/Pages/Merchant/Partials/AddMerchant";
+// import AddMerchant from "@/Pages/Merchant/Partials/AddMerchant";
 
 export default function Merchant({auth}) {
 
@@ -24,7 +24,7 @@ export default function Merchant({auth}) {
             <div className="flex flex-col gap-5">
 
                 <div className="flex flex-col md:flex-row gap-5">
-                    <div className="lg:w-1/3 flex flex-col gap-5">
+                    <div className="md:w-1/3 flex flex-col gap-5">
                         <div className="flex flex-col gap-5 p-5 rounded-lg border border-neutral-100 bg-gray-25 shadow-container">
                             <div className="border-l-4 rounded-l border-primary-700 flex flex-row gap-5 w-full py-1 pl-4">
                                 <div className="flex flex-col gap-1 w-full">
@@ -54,7 +54,7 @@ export default function Merchant({auth}) {
                         </div>
                     </div>
 
-                    <div className="lg:w-2/3 md:p-5 rounded-lg md:border md:border-neutral-100 md:bg-gray-25 md:shadow-container">
+                    <div className="md:w-2/3 md:p-5 rounded-lg md:border md:border-neutral-100 md:bg-gray-25 md:shadow-container">
                         <div className="flex flex-col gap-4">
                             <div className="flex justify-between">
                                 <div className="text-neutral-950 text-lg font-bold font-sf-pro">
@@ -119,8 +119,19 @@ export default function Merchant({auth}) {
                                         Filter
                                     </div>
                                 </div>
-
-                                <AddMerchant />
+                                <Link href={route('merchant.add-merchant')} >
+                                    <Button
+                                        size="lg"
+                                        iconOnly
+                                        className="w-full flex gap-2 items-center justify-center"
+                                    >
+                                        <PlusIcon/>
+                                        <span className="text-sm font-sf-pro text-white font-medium hidden xl:block">
+                                            Create New Merchant
+                                        </span>
+                                    </Button>
+                                </Link>
+                                {/* <AddMerchant /> */}
                             </div>
                         </div>
                     </div>
