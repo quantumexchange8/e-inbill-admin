@@ -775,7 +775,7 @@
   box-shadow: none;
 }
 .p-dropdown .p-dropdown-trigger {
-  background: transparent;
+  background: #F8F8FA;
   color: #6c757d;
   width: 3rem;
   border-top-right-radius: 6px;

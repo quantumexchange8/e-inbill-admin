@@ -5,9 +5,10 @@ import SearchInput from "@/Components/SearchInput";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import React from "react";
+import CountUp from 'react-countup';
 // import AddMerchant from "@/Pages/Merchant/Partials/AddMerchant";
 
-export default function Merchant({auth}) {
+export default function Merchant({auth, merchantNo}) {
 
     const { data, setData, post, processing, errors, reset } = useForm({
         search: '',
@@ -29,7 +30,9 @@ export default function Merchant({auth}) {
                             <div className="border-l-4 rounded-l border-primary-700 flex flex-row gap-5 w-full py-1 pl-4">
                                 <div className="flex flex-col gap-1 w-full">
                                     <span className="text-xs text-neutral-950 font-sf-pro">No.of Merchant</span>
-                                    <span className="text-xl text-neutral-950 font-sf-pro font-bold leading-tight">999</span>
+                                    <span className="text-xl text-neutral-950 font-sf-pro font-bold leading-tight">
+                                        <CountUp end={merchantNo} duration={2} /> 
+                                    </span>
                                 </div>
                                 <div>
                                     <NoOfMerchantIcon />

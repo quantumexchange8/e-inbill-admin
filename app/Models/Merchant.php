@@ -13,20 +13,17 @@ class Merchant extends Model
 
 
     protected $fillable = [
+        'merchant_id',
         'merchant_name',
-        'merchant_role_id',
-        'password',
+        'merchant_email',
+        'tin_no',
+        'registration_no',
+        'classification_id',
+        'address',
+        'postcode',
+        'area',
+        'state',
+        'phone',
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    protected function casts(): array
-    {
-        return [
-            'password' => 'hashed',
-        ];
-    }
 }

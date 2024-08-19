@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Merchant;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -12,11 +13,11 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('merchant_role_id', 'password');
+        $credentials = $request->only('role_id', 'password');
 
         // Validate the request data
         $validator = Validator::make($credentials, [
-            'merchant_role_id' => 'required|string',
+            'role_id' => 'required|string',
             'password' => 'required|string',
         ]);
 
@@ -30,19 +31,13 @@ class AuthController extends Controller
         }
 
         // Find the merchant by role_id
-        $merchant = Merchant::where('merchant_role_id', $credentials['merchant_role_id'])->first();
+        $merchant = User::where('role_id', $credentials['role_id'])->first();
 
         if (!$merchant || !Hash::check($credentials['password'], $merchant->password)) {
+            
             return response()->json([
                 'user' => null,
                 'message' => 'Invalid login details',
-                'status' => 'failed',
-            ], 200);
-        }
-
-        if ($merchant->status === 'Inactive') {
-            return response()->json([
-                'message' => 'This merchant is Inactive',
                 'status' => 'failed',
             ], 200);
         }
@@ -52,7 +47,7 @@ class AuthController extends Controller
 
         $user_loggedin = [
             'id' => $merchant->id,
-            'merchant_role_id' => $merchant->merchant_role_id,
+            'role_id' => $merchant->role_id,
             'status' => 'loggedin',
             'token' => $token,
         ];
